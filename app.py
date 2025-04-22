@@ -25,7 +25,7 @@ st.markdown("""
 # Función para cargar los datos
 def cargar_datos():
     try:
-        df = pd.read_csv('data/atletas.csv')
+        df = pd.read_csv('atletas.csv')
         return df
     except:
         st.error("No se pudo cargar el archivo de datos")
