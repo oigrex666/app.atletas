@@ -19,7 +19,7 @@ def carga_datos():
     """
     try:
         # Intenta cargar el archivo CSV
-        df = pd.read_csv('data/atletas.csv')
+        df = pd.read_csv('atletas.csv')
         return df
     except FileNotFoundError:
         # Maneja el error si el archivo no existe
