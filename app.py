@@ -84,7 +84,7 @@ elif pagina == "Modelo":
         X_scaled = scaler.fit_transform(X)
         X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-        if st.sidebar.button("Entrenar Modelo"):
+        if st.button("Entrenar Modelo"):
             with st.spinner("Entrenando..."):
                 modelo = DecisionTreeClassifier(max_depth=max_depth, criterion=criterion, random_state=42)
                 modelo.fit(X_train, y_train)
