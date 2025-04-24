@@ -157,4 +157,5 @@ elif pagina == "Métricas":
     else:
         st.warning("No hay modelo entrenado o datos disponibles.")
 elif pagina=='home':
-    st.write('esta app te permite predecir si alguien es findista o velocista en funcion de las variables edad, Frecuencia Cardíaca y Volumen Sistólico de la persona.')
+    st.title('Inicio')
+    st.write('Esta app te permite predecir si alguien es findista o velocista en funcion de las variables edad, Frecuencia Cardíaca y Volumen Sistólico de la persona.')
