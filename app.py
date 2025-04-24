@@ -33,7 +33,7 @@ def cargar_datos():
 
 # Barra lateral
 st.sidebar.title("Menú de Navegación")
-pagina = st.sidebar.selectbox("Selecciona una opción:", ["Preprocesamiento","Predicción", "Modelo", "Datos", "Métricas"])
+pagina = st.sidebar.selectbox("Selecciona una opción:", ["home","Preprocesamiento","Predicción", "Modelo", "Datos", "Métricas"])
 
 # Variables en la barra lateral
 st.sidebar.subheader("Variables de entrada")
@@ -156,3 +156,5 @@ elif pagina == "Métricas":
         st.write(f"F1-Score: {f1_score(y_test, y_pred, average='weighted'):.2f}")
     else:
         st.warning("No hay modelo entrenado o datos disponibles.")
+elif pagina=='home':
+    st.write('esta app te permite predecir si alguien es findista o velocista en funcion de las variables edad, Frecuencia Cardíaca y Volumen Sistólico de la persona.')
