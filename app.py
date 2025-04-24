@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import base64
 
 # Configuración de la página
-st.set_page_config(page_title="Clasificador de Atletas", page_icon=:man_in_manual_wheelchair:)
+st.set_page_config(page_title="Clasificador de Atletas", page_icon="👨‍🦽")
 
 
 # CSS para cambiar el fondo
