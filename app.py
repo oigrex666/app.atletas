@@ -8,6 +8,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.preprocessing import StandardScaler 
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+from streamlit_lottie import st_lottie
+import requests
+
 
 # Configuración de la página
 st.set_page_config(page_title="Clasificador de Atletas", page_icon="👨‍🦽")
@@ -97,6 +100,13 @@ elif pagina == "Modelo":
                 precision = accuracy_score(y_test, y_pred)
                 st.success(f"¡Modelo entrenado! Precisión: {precision:.2f}")
 
+
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
 elif pagina == "Predicción":
     st.header("Hacer Predicción")
     if os.path.exists('modelo/clasificador.pkl'):
@@ -109,12 +119,20 @@ elif pagina == "Predicción":
         dato_scaled = scaler.transform(dato)
         prediccion = modelo.predict(dato_scaled)[0]
         st.success(f"Predicción: {prediccion}")
+
+        # Cargar animación
+        lottie_url = "https://assets10.lottiefiles.com/packages/lf20_qp1q7mct.json"  # Ejemplo: animación de silla de ruedas
+        lottie_anim = load_lottieurl(lottie_url)
+        if lottie_anim:
+            st_lottie(lottie_anim, height=300, key="silla_de_ruedas")
+
         probabilidades = modelo.predict_proba(dato_scaled)[0]
         st.write("Probabilidad por clase:")
         for i, prob in enumerate(probabilidades):
             st.write(f"Clase {i}: {prob:.2f}")
     else:
         st.warning("No hay modelo entrenado. Ve a la página 'Modelo' para entrenarlo primero.")
+
 
 elif pagina == "Métricas":
     st.header("Métricas del Modelo")
