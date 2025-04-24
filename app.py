@@ -12,6 +12,11 @@ from streamlit_lottie import st_lottie
 import requests
 
 
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 # Configuración de la página
 st.set_page_config(page_title="Clasificador de Atletas", page_icon="👨‍🦽")
 
@@ -100,12 +105,6 @@ elif pagina == "Modelo":
                 precision = accuracy_score(y_test, y_pred)
                 st.success(f"¡Modelo entrenado! Precisión: {precision:.2f}")
 
-
-def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
 
 elif pagina == "Predicción":
     st.header("Hacer Predicción")
