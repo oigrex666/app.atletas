@@ -99,16 +99,17 @@ elif pagina == "Modelo":
 
 elif pagina == "Predicción":
     st.header("Hacer Predicción")
-    if os.path.exists('modelo/clasificador.pkl'):
-        with open('modelo/clasificador.pkl', 'rb') as f:
+    if os.path.exists('clasificador.pkl'):
+        with open('clasificador.pkl', 'rb') as f:
             modelo = pickle.load(f)
-        with open('modelo/scaler.pkl', 'rb') as f:
+        with open('scaler.pkl', 'rb') as f:
             scaler = pickle.load(f)
 
         dato = [[edad, frecuencia, volumen]]
         dato_scaled = scaler.transform(dato)
         prediccion = modelo.predict(dato_scaled)[0]
         st.success(f"Predicción: {prediccion}")
+
         probabilidades = modelo.predict_proba(dato_scaled)[0]
         st.write("Probabilidad por clase:")
         for i, prob in enumerate(probabilidades):
