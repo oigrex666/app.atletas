@@ -160,4 +160,4 @@ elif pagina == "Métricas":
 elif pagina=='home':
     st.title('Inicio')
     st.write('Esta app te permite predecir si alguien es findista o velocista en funcion de las variables edad, Frecuencia Cardíaca y Volumen Sistólico de la persona.')
-añade una animacion de gente en silla de ruedas cuando el modelo haga una prediccion
+
